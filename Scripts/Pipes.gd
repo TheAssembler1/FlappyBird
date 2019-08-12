@@ -43,10 +43,16 @@ func _on_BirdCollision_body_entered(body):
 			#adding it as a child
 			get_parent().add_child(pipes)
 
+#seeing if the bird hit us
 func _on_Area2D2_body_entered(body):
+	
+	#not letting the bird jump anymore
 	if body.is_in_group("FlappyBird"):
 		body.can_jump = false
 
+#seeing if the bird hit us
 func _on_Area2D3_body_entered(body):
+	
+	#not letting the bird jump anymore
 	if body.is_in_group("FlappyBird"):
 		body.can_jump = false
