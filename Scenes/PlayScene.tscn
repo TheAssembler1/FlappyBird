@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://PlayScene.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/CursedTimerUlil-Aznm.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/tumblr_pbyi0xEY7B1udr689o1_400.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/FlappyBird.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 30, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel_random = 1.0
+scale = 10.0
+scale_random = 1.0
+
+[node name="PlayScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 200.0
+margin_top = 300.0
+margin_right = 400.0
+margin_bottom = 340.0
+custom_fonts/font = SubResource( 1 )
+text = "play"
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 200.0
+margin_top = 450.0
+margin_right = 400.0
+margin_bottom = 490.0
+custom_fonts/font = SubResource( 2 )
+text = "QUIT"
+
+[node name="tumblr_pbyi0xEY7B1udr689o1_400" type="Sprite" parent="."]
+position = Vector2( 301.753, 400.414 )
+scale = Vector2( 1.58409, 1.50339 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 128.5
+margin_top = 100.0
+margin_right = 471.5
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0313726, 0, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Flappy Bird"
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 300, 0 )
+z_index = -1
+amount = 300
+lifetime = 40.0
+process_material = SubResource( 4 )
+
+[node name="FlappyBird" type="Sprite" parent="."]
+position = Vector2( 300.78, 653.907 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="Button3" to="." method="_on_Button3_button_down"]

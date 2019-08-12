@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Pipes.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/pipe.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 55.0244, 274.362 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 46, 279 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 45.0001, 118.301 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 278 )
+
+[node name="Pipes" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 400 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 400 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 400 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, -400 )
+scale = Vector2( 0.7, -0.7 )
+texture = ExtResource( 2 )
+
+[node name="BirdCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdCollision"]
+shape = SubResource( 4 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 0, 400 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 0, -800 )
+shape = SubResource( 3 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( 0, 400 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="BirdCollision" to="." method="_on_BirdCollision_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_Area2D3_body_entered"]
